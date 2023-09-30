@@ -1,0 +1,16 @@
+_require "basis.smi"
+
+structure Game =
+struct
+  datatype color = BLACK | WHITE;
+  type pos = int * int;
+  type board (= list);
+  type game = { board : board, next : color option };
+  val initGame : game;
+  val boardSize : int;
+  val get : board -> pos -> color option;
+  val possible : board -> color -> pos list;
+  val step : game -> pos -> game option;
+  val cpuMove : board -> pos option;
+  val play : pos list -> game option;
+end
